@@ -1,13 +1,13 @@
 # ScoopsAndScones-iOS
 
-해당 앱은 `VIP 패턴`을 적용하기 위한 튜토리얼 앱으로 학습 목적으로 생성하였습니다. 
+해당 앱은 `VIP 패턴`을 적용하기 위한 `튜토리얼 앱`으로 학습 목적으로 생성하였습니다. 
 
 모든 예제 코드와 내용에 대한 저작권([링크](https://www.kodeco.com/29416318-getting-started-with-the-vip-clean-architecture-pattern#toc-anchor-001))은 원저자에게 있습니다. 
 
 ## How to run
 
 ```
-> cd Starter
+> cd Finished
 > open ScoopsAndScones.xcodeproj
 ```
 
@@ -19,7 +19,7 @@
 </div>
 
 
-## VIP (View-Interactor-Presenter)??
+## VIP (View-Interactor-Presenter)
 
 <img src="https://user-images.githubusercontent.com/111719007/230911412-89dc28c0-4723-45bb-a8d3-2b8cea859453.png" height="350"/>
 
@@ -175,8 +175,10 @@ extension CreateIceCreamView: CreateIceCreamDisplayLogic {
 }
 ```
 
+
 ### 컨피규레이터 만들기
 → Configurator는 VIP 주기의 구성 요소를 인스턴스화 하고, 연결하여 단방향 사이클을 생성합니다.
+
 → 모든 Scene에서 하나의 Configurator를 한번만 호출하여 사용해야 합니다.
 
 ```Swift
@@ -193,3 +195,54 @@ extension CreateIceCreamView {
   }
 }
 ```
+
+
+## Unit Testing
+
+- 개발자가 작성한 소스 코드의 각각의 기능 또는 모듈이 예상대로 작동하는지를 확인하기 위해 개발자가 작성하는 코드 테스트 기법 중 하나입니다.
+- 즉, 작성한 코드의 작은 부분, 즉 "유닛(unit)"을 독립적으로 테스트하여 해당 유닛이 올바르게 동작하는지 여부를 검증하는 것입니다.
+- 프트웨어의 전체적인 품질을 향상시키는 데 도움이 되며, 버그를 조기에 발견하고 수정하여 개발자가 코드를 안정적으로 유지할 수 있도록 합니다.
+- 일반적으로 자동화된 테스트 도구를 사용하여 수행하며, 코드 실행을 자동화하고, 예상되는 결과와 실제 결과를 비교하여 문제가 있는 부분을 찾아내는 등의 작업을 수행합니다.
+
+### 유닛 테스트 적용하기
+
+```
+> cd Starter
+> cd Test Classes
+```
+
+해당 폴더의 3개의 테스트 파일을 Scenes의 IceCream 파일로 아래와 같이 이동합니다.
+
+<img src="https://user-images.githubusercontent.com/111719007/230911406-e446847d-bef0-400f-b89c-45aaa87bb7ba.png" height="300"/>
+
+
+```Swift
+/* 현재 테스트 중인 시스템은 CreateIceCreamView이고, 이 뷰는 인터렉터에 요청을 전달합니다.
+   인터랙터는 구성 요소들의 의존성을 분리하기 위해 스파이 테스트 더블을 생성합니다. 
+   스파이는 특정 유형의 모의 객체 또는 테스트 더블로, 테스트 중인 시스템에서 생성된 출력 또는 효과를 기록하여 예상대로 작동하는지 확인할 수 있습니다. 
+   CreateIceCreamBusinessLogic 프로토콜을 준수하기 때문에, 해당 프로토콜에서 정의된 메서드를 테스트할 수 있습니다. */
+   
+class CreateIceCreamInteractorSpy: CreateIceCreamBusinessLogic {
+  var loadIceCreamCalled = false
+
+  func loadIceCream(request: CreateIceCream.LoadIceCream.Request) {
+    loadIceCreamCalled = true
+  }
+}
+
+func testShouldLoadIceCreamOnViewAppear() {
+  // Given
+  sut.interactor = interactorSpy
+  // When
+  sut.fetchIceCream()
+  // Then
+  XCTAssertTrue(
+    interactorSpy.loadIceCreamCalled,
+    "fetchIceCream() should ask the interactor to load the ice cream"
+  )
+}
+```
+
+Command-U로 테스트 스위트를 실행하면 다음과 같은 log를 확인할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/111719007/230911397-267a8b43-4707-4122-a928-27db7bc0402f.png" height="70"/>
