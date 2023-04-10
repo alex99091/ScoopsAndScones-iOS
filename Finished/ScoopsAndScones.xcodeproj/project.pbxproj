@@ -47,6 +47,9 @@
 		6684147529E410330093D7F2 /* CreateIceCreamInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamInteractor.swift; sourceTree = "<group>"; };
 		6684147729E4110A0093D7F2 /* CreateIceCreamPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamPresenter.swift; sourceTree = "<group>"; };
 		6684147929E412180093D7F2 /* CreateIceCreamConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamConfigurator.swift; sourceTree = "<group>"; };
+		6684148129E4163D0093D7F2 /* CreateIceCreamInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamInteractorTests.swift; sourceTree = "<group>"; };
+		6684148229E4163D0093D7F2 /* CreateIceCreamPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamPresenterTests.swift; sourceTree = "<group>"; };
+		6684148329E4163D0093D7F2 /* CreateIceCreamViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIceCreamViewTests.swift; sourceTree = "<group>"; };
 		EA3B6B652725B14100CE9E2B /* ScoopsAndSconesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopsAndSconesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3B6B7127282CD800CE9E2B /* IceCream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCream.swift; sourceTree = "<group>"; };
 		EA3B6B76272836B900CE9E2B /* IceCreamDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamDataStore.swift; sourceTree = "<group>"; };
@@ -194,6 +197,9 @@
 		EAEAAE5F27415B070015D245 /* IceCream */ = {
 			isa = PBXGroup;
 			children = (
+				6684148129E4163D0093D7F2 /* CreateIceCreamInteractorTests.swift */,
+				6684148229E4163D0093D7F2 /* CreateIceCreamPresenterTests.swift */,
+				6684148329E4163D0093D7F2 /* CreateIceCreamViewTests.swift */,
 			);
 			path = IceCream;
 			sourceTree = "<group>";
