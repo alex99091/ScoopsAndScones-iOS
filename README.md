@@ -11,7 +11,7 @@
 > open ScoopsAndScones.xcodeproj
 ```
 
-## App Features
+## App Apperance
 <div>
 <img src="https://user-images.githubusercontent.com/111719007/230912116-8a8feb11-a879-46d1-9f20-882b9ac188f6.png" height="450"/>
 <img src="https://user-images.githubusercontent.com/111719007/230912120-690af930-c55e-4dc2-98ea-2addf996aee9.png" height="450"/>
